@@ -3,3 +3,4 @@
 Vagrantfile
 provision.sh
 vendor
+storage/*.json
