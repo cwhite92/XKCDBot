@@ -1,0 +1,23 @@
+{
+    "name": "cwhite92/xkcd-slack",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris White",
+            "email": "chris@cwhite.me"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.0",
+        "adam-paterson/oauth2-slack": "^1.1",
+        "coderstephen/slack-client": "^0.2.3",
+        "slim/php-view": "^2.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "ChrisWhite\\XkcdSlack\\": "src/"
+        }
+    }
+}
