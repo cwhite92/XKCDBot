@@ -11,6 +11,12 @@ class SyncXkcd
         $id = 1;
 
         while (true) {
+            if ($id === 404) {
+                echo "Skipping 404 for obvious reasons...\n";
+                $id++;
+                continue;
+            }
+
             if (file_exists(sprintf(self::COMICS_PATH, __DIR__, $id))) {
                 echo "Comic $id exists, skipping\n";
                 $id++;
