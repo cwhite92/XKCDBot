@@ -11,7 +11,7 @@
         "slim/slim": "^3.0",
         "adam-paterson/oauth2-slack": "^1.1",
         "coderstephen/slack-client": "^0.2.3",
-        "slim/php-view": "^2.1"
+        "slim/twig-view": "^2.1"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

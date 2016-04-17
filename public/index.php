@@ -11,7 +11,15 @@ $settings = ['displayErrorDetails' => true];
 $app = new \Slim\App(['settings' => $settings]);
 
 $container = $app->getContainer();
-$container['view'] = new \Slim\Views\PhpRenderer(__DIR__.'/../src/templates/');
+$container['view'] = function ($container) {
+    $view = new \Slim\Views\Twig(__DIR__.'/../src/templates', ['cache' => false]);
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container['router'],
+        $container['request']->getUri()
+    ));
+
+    return $view;
+};
 
 $app->get('/', function (Request $request, Response $response) {
     return $this->view->render($response, 'home.html');
@@ -40,6 +48,14 @@ $app->post('/xkcd', function (Request $request, Response $response) {
             ]
         ]
     ]);
+});
+
+$app->get('/auth', function (Request $request, Response $response) {
+    return $response->withRedirect('/thanks');
+});
+
+$app->get('/thanks', function (Request $request, Response $response) {
+    return $this->view->render($response, 'thanks.html');
 });
 
 $app->run();
