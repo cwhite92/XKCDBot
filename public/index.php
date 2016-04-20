@@ -51,6 +51,25 @@ $app->post('/xkcd', function (Request $request, Response $response) {
 });
 
 $app->get('/auth', function (Request $request, Response $response) {
+    $provider = new \League\OAuth2\Client\Provider\GenericProvider([
+        'clientId'                => '35162881508.35386565014',
+        'clientSecret'            => '903051066bb3a567c6f17347d1605f0b',
+        'redirectUri'             => 'https://xkcd.cwhite.me/auth',
+        'urlAuthorize'            => 'https://slack.com/oauth/authorize',
+        'urlAccessToken'          => 'https://slack.com/api/oauth.access',
+        'urlResourceOwnerDetails' => 'https://slack.com/api/users.info'
+    ]);
+
+    if ($request->getParam('code')) {
+        try {
+            $accessToken = $provider->getAccessToken('authorization_code', [
+                'code' => $request->getParam('code')
+            ]);
+        } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
+            // silently fail... shhhh
+        }
+    }
+
     return $response->withRedirect('/thanks');
 });
 
