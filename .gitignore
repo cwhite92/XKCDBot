@@ -4,3 +4,4 @@ Vagrantfile
 provision.sh
 vendor
 storage/*.json
+node_modules

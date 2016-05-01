@@ -2,10 +2,22 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{% block title %}{% endblock %}XKCD for Slack</title>
+
+        <link href="/css/styles.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        {% block content %}{% endblock %}
+        <div class="content clearfix">
+            <div class="intro">
+                {% block content %}{% endblock %}
+            </div>
+
+            <img src="http://puu.sh/oCi5u/429764b337.png" class="preview" alt="XKCD Slack bot preview">
+        </div>
+        <div class="footer">
+            <p>Made by <a href="https://cwhite.me">Chris White</a>. <strong>NOT</strong> an official XKCD project.</p>
+        </div>
     </body>
 </html>
