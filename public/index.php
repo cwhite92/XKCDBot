@@ -33,6 +33,10 @@ $app->post('/xkcd', function (Request $request, Response $response) {
     $searcher = new ComicSearcher();
     $result = $searcher->search($searchTerms);
 
+    if (is_null($result)) {
+        return "I couldn't find a relevant XKCD!";
+    }
+
     return $response->withJson([
         'response_type' => 'in_channel',
         'attachments' => [

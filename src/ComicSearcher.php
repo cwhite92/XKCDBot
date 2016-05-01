@@ -14,6 +14,8 @@ class ComicSearcher
                 return $this->normaliseComic($comic);
             }
         }
+
+        return null;
     }
 
     protected function normaliseComic(array $comic)
