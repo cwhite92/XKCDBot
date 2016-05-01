@@ -56,9 +56,9 @@ $app->post('/xkcd', function (Request $request, Response $response) {
 
 $app->get('/auth', function (Request $request, Response $response) {
     $provider = new \League\OAuth2\Client\Provider\GenericProvider([
-        'clientId'                => '35162881508.35386565014',
-        'clientSecret'            => '903051066bb3a567c6f17347d1605f0b',
-        'redirectUri'             => 'https://xkcd.cwhite.me/auth',
+        'clientId'                => getenv('SLACK_CLIENT_ID'),
+        'clientSecret'            => getenv('SLACK_CLIENT_SECRET'),
+        'redirectUri'             => getenv('SLACK_REDIRECT_URI'),
         'urlAuthorize'            => 'https://slack.com/oauth/authorize',
         'urlAccessToken'          => 'https://slack.com/api/oauth.access',
         'urlResourceOwnerDetails' => 'https://slack.com/api/users.info'
