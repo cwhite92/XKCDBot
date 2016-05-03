@@ -12,8 +12,18 @@ $container = $app->getContainer();
 /**
  * Set up dependency injection.
  */
+$container['bingClient'] = function () {
+    $guzzle = new \GuzzleHttp\Client();
+
+    return new \ChrisWhite\XkcdSlack\Bing\Client($guzzle, getenv('BING_APPLICATION_KEY'));
+};
+
 $container['localSource'] = function () {
     return new \ChrisWhite\XkcdSlack\Search\Sources\LocalSource(__DIR__.'/../storage');
+};
+
+$container['bingSource'] = function ($container) {
+    return new \ChrisWhite\XkcdSlack\Search\Sources\BingSource($container['bingClient']);
 };
 
 $container['comicRepository'] = function () {
@@ -22,7 +32,8 @@ $container['comicRepository'] = function () {
 
 $container['searchEngine'] = function($container) {
     $sources = [
-        $container['localSource']
+        $container['localSource'],
+        $container['bingSource']
     ];
 
     $comicRepository = $container['comicRepository'];
