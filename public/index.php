@@ -27,7 +27,7 @@ $container['bingSource'] = function ($container) {
 };
 
 $container['comicRepository'] = function () {
-    return new \ChrisWhite\XkcdSlack\Search\ComicRepository(__DIR__.'/../storage');
+    return new \ChrisWhite\XkcdSlack\Comic\ComicRepository(__DIR__.'/../storage');
 };
 
 $container['searchEngine'] = function($container) {

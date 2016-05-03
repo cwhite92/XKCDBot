@@ -2,6 +2,8 @@
 
 namespace ChrisWhite\XkcdSlack\Search;
 
+use ChrisWhite\XkcdSlack\Comic\ComicRepository;
+
 class Engine
 {
     /**

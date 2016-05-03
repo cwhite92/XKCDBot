@@ -1,9 +1,14 @@
 <?php
 
-namespace ChrisWhite\XkcdSlack\Search;
+namespace ChrisWhite\XkcdSlack\Comic;
 
 class ComicRepository
 {
+    /**
+     * The directory where comics are stored.
+     *
+     * @var string
+     */
     protected $comicsDirectory;
 
     /**
