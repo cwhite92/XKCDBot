@@ -12,6 +12,14 @@ $container = $app->getContainer();
 /**
  * Set up dependency injection.
  */
+$container['predis'] = function () {
+    return new \Predis\Client([
+        'scheme' => 'tcp',
+        'host'   => getenv('REDIS_HOST'),
+        'port'   => getenv('REDIS_PORT'),
+    ]);
+};
+
 $container['bingClient'] = function () {
     $guzzle = new \GuzzleHttp\Client();
 
@@ -39,6 +47,10 @@ $container['searchEngine'] = function($container) {
     $comicRepository = $container['comicRepository'];
 
     return new \ChrisWhite\XkcdSlack\Search\Engine($sources, $comicRepository);
+};
+
+$container['cachedSearchEngine'] = function($container) {
+    return new \ChrisWhite\XkcdSlack\Search\CachedEngine($container['searchEngine'], $container['predis']);
 };
 
 /**
@@ -71,7 +83,7 @@ $app->post('/xkcd', function (Request $request, Response $response) {
         return $response->withStatus(400);
     }
 
-    $searchEngine = $this->get('searchEngine');
+    $searchEngine = $this->get('cachedSearchEngine');
     $comic = $searchEngine->search($searchTerms);
 
     if (is_null($comic)) {

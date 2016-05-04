@@ -4,7 +4,7 @@ namespace ChrisWhite\XkcdSlack\Search;
 
 use ChrisWhite\XkcdSlack\Comic\ComicRepository;
 
-class Engine
+class Engine implements EngineInterface
 {
     /**
      * Holds the sources to aid the search.
