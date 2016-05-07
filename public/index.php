@@ -143,4 +143,12 @@ $app->get('/thanks', function (Request $request, Response $response) {
     return $this->view->render($response, 'thanks.html');
 });
 
+$app->get('/privacy', function(Request $request, Response $response) {
+    return $this->view->render($response, 'privacy.html');
+});
+
+$app->get('/support', function(Request $request, Response $response) {
+    return $this->view->render($response, 'support.html');
+});
+
 $app->run();
