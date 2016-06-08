@@ -29,15 +29,37 @@ class LocalSource implements SourceInterface
      */
     public function search($terms)
     {
-        $searchTerms = strtolower($terms);
-
         foreach ($this->comics() as $comic) {
-            if (strtolower($comic['safe_title']) === $searchTerms) {
+            if ($this->isMatch($comic, $terms)) {
                 return $comic['num'];
             }
         }
 
         return null;
+    }
+
+    /**
+     * Returns true if the comic matches the search terms, false otherwise.
+     *
+     * @param $comic
+     * @param $terms
+     * @return bool
+     */
+    protected function isMatch($comic, $terms)
+    {
+        $terms = strtolower($terms);
+
+        // Exact comic matches.
+        if (strtolower($comic['safe_title']) === $terms) {
+            return $comic['num'];
+        }
+
+        // Comic ID matches.
+        if (ctype_digit($terms) && $comic['num'] == $terms) {
+            return $comic['num'];
+        }
+
+        return false;
     }
 
     /**
