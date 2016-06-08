@@ -21,6 +21,11 @@ class CachedEngine implements EngineInterface
     protected $client;
 
     /**
+     * The amount of seconds to keep a result cached.
+     */
+    const EXPIRY_SECONDS = 604800;
+
+    /**
      * Instantiates a new cached search engine.
      *
      * @param EngineInterface $engine
@@ -49,6 +54,7 @@ class CachedEngine implements EngineInterface
         $freshValue = $this->engine->search($terms);
 
         $this->client->set($terms, serialize($freshValue));
+        $this->client->expire($terms, static::EXPIRY_SECONDS);
 
         return $freshValue;
     }
