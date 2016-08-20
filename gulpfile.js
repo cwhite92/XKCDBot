@@ -1,16 +1,34 @@
 var gulp = require('gulp');
-var sass = require('gulp-sass');
-var cssmin = require('gulp-cssmin');
+var ts = require('gulp-typescript');
+var mocha = require('gulp-mocha');
 
-gulp.task('scss', function() {
-    return gulp.src('./scss/styles.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(cssmin())
-        .pipe(gulp.dest('./public/css'));
+// TODO: make this use tsconfig.json
+// var tsProject = ts.createProject('tsconfig.json');
+
+gulp.task('build', function() {
+    return gulp.src('src/**/*.ts', {base: '.'})
+        .pipe(ts({
+            "target": "es6",
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "experimentalDecorators": true
+        }))
+        .pipe(gulp.dest('.'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch('./scss/**/*.scss', ['scss']);
+gulp.task('test', ['build'], function() {
+    return gulp.src('./test/**/*.ts', {base: '.'})
+        .pipe(ts({
+            "target": "es6",
+            "module": "commonjs",
+            "moduleResolution": "node",
+            "experimentalDecorators": true
+        }))
+        .pipe(gulp.dest('.'))
+        .pipe(mocha({
+            reporter: 'nyan',
+            timeout: 10000
+        }));
 });
 
-gulp.task('default', ['scss', 'watch']);
+gulp.task('default', ['build']);

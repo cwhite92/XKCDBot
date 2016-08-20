@@ -1,10 +1,24 @@
 {
-  "name": "xkcd-slack",
-  "version": "1.0.0",
-  "dependencies": {
-    "bourbon-neat": "^1.7.4",
+  "name": "xkcdbot",
+  "description": "XKCDBot's source code.",
+  "author": "Chris White",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cwhite92/XKCDBot.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cwhite92/XKCDBot/issues"
+  },
+  "homepage": "https://github.com/cwhite92/XKCDBot#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "gulp-cssmin": "^0.1.7",
-    "gulp-sass": "^2.2.0"
+    "gulp-mocha": "^3.0.1",
+    "gulp-typescript": "^2.13.6",
+    "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "web-request": "^1.0.3"
   }
 }

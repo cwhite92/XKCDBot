@@ -1,7 +1,6 @@
-.idea
-.vagrant
-Vagrantfile
-provision.sh
-vendor
-storage/*.json
+src/**/*.js
+test/**/*.js
+
+.serverless
 node_modules
+typings
