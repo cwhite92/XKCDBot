@@ -5,7 +5,7 @@ var mocha = require('gulp-mocha');
 var tsProject = ts.createProject('tsconfig.json');
 
 gulp.task('build', function() {
-    return gulp.src('src/**/*.ts', {base: '.'})
+    return gulp.src(['src/**/*.ts', 'typings/index.d.ts'], {base: '.'})
         .pipe(ts(tsProject))
         .pipe(gulp.dest('.'));
 });
