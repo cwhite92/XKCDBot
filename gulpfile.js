@@ -15,8 +15,7 @@ gulp.task('test', ['build'], function() {
         .pipe(ts(tsProject))
         .pipe(gulp.dest('.'))
         .pipe(mocha({
-            reporter: 'nyan',
-            timeout: 10000
+            reporter: 'nyan'
         }));
 });
 
