@@ -1,6 +1,4 @@
-///<reference path="../typings/index.d.ts"/>
-
-import Client from '../src/Client';
+import Client from '../src/Http/Client';
 import { expect } from 'chai';
 
 describe('XKCD Client', () => {

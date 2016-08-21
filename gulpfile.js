@@ -11,7 +11,7 @@ gulp.task('build', function() {
 });
 
 gulp.task('test', ['build'], function() {
-    return gulp.src('./test/**/*.ts', {base: '.'})
+    return gulp.src(['./test/**/*.ts', 'typings/index.d.ts'], {base: '.'})
         .pipe(ts(tsProject))
         .pipe(gulp.dest('.'))
         .pipe(mocha({
