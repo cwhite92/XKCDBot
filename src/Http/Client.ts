@@ -10,7 +10,7 @@ export default class Client {
     }
 
     async put(url: string, options?: RequestOptions, content?: any): Promise<Response<string>> {
-        return await WRPost(url, options, content);
+        return await WRPut(url, options, content);
     }
 
     async patch(url: string, options?: RequestOptions, content?: any): Promise<Response<string>> {
