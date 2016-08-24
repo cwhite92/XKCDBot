@@ -4,6 +4,6 @@
     "form-data": "registry:dt/form-data#0.0.0+20160724024111",
     "inversify": "registry:dt/inversify#2.0.0-beta.9+20160811111312",
     "mocha": "registry:dt/mocha#2.2.5+20160720003353",
-    "node": "registry:dt/node#6.0.0+20160818175514"
+    "node": "registry:dt/node#6.0.0+20160818175514",
   }
 }
