@@ -1,10 +1,10 @@
 import { injectable } from "inversify";
 import "reflect-metadata";
 import { get as WRGet, post as WRPost, put as WRPut, patch as WRPatch, del as WRDel, RequestOptions, Response } from 'web-request';
-import { IHttpClient } from "../types";
+import IHttpClient from "./IHttpClient"
 
 @injectable()
-export default class Client implements IHttpClient {
+export default class HttpClient implements IHttpClient {
     async get(url: string, options?: RequestOptions): Promise<Response<string>> {
         return await WRGet(url, options);
     }

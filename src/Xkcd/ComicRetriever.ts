@@ -1,12 +1,13 @@
 import { injectable, inject } from "inversify";
-import { IHttpClient, IComicRetriever, TYPES } from "../types";
+import IHttpClient from "../Http/IHttpClient"
+import IComicRetriever from "./IComicRetriever";
 
 @injectable()
 export default class ComicRetriever implements IComicRetriever {
     private httpClient: IHttpClient;
 
     public constructor(
-        @inject(TYPES.HttpClient) httpClient: IHttpClient
+        @inject("HttpClient") httpClient: IHttpClient
     ) {
         this.httpClient = httpClient;
     }

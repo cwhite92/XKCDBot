@@ -1,4 +1,4 @@
-import {Response, RequestOptions} from "web-request/index";
+import { RequestOptions, Response } from "web-request/index";
 
 interface IHttpClient {
     get(url: string, options?: RequestOptions): Promise<Response<string>>;
@@ -8,13 +8,4 @@ interface IHttpClient {
     delete(url: string, options?: RequestOptions): Promise<Response<string>>;
 }
 
-interface IComicRetriever {
-    getLatestComic(): Promise<string>;
-}
-
-let TYPES = {
-    HttpClient: Symbol('HttpClient'),
-    ComicRetriever: Symbol('ComicRetriever')
-};
-
-export { IHttpClient, IComicRetriever, TYPES };
+export default IHttpClient;

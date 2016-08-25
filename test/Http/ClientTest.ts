@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-describe('Dummy test', () => {
+describe('HTTP Client', () => {
     it('should do something', () => {
         expect(1).to.eq(1);
     })

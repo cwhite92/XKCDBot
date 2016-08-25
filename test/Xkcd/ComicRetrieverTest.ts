@@ -1,12 +1,12 @@
 import { expect } from "chai";
 import kernel from "../../src/inversify.config";
-import {TYPES, IComicRetriever} from "../../src/types";
+import IComicRetriever from "../../src/Xkcd/IComicRetriever";
 
 describe('Comic Retriever', () => {
-    let comicRetriever:any = null;
+    let comicRetriever:IComicRetriever = null;
 
     beforeEach(() => {
-        comicRetriever = kernel.get<IComicRetriever>(TYPES.ComicRetriever);
+        comicRetriever = kernel.get<IComicRetriever>("ComicRetriever");
     });
 
     it('should return the HTML of the latest comic', (done) => {
