@@ -11,6 +11,7 @@ describe('Comic Retriever', () => {
 
     it('should return the HTML of the latest comic', (done) => {
         comicRetriever.getLatestComic().then((comicHtml) => {
+            console.log(comicHtml);
             expect(comicHtml).to.be.a('string');
             done();
         });

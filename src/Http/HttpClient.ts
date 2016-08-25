@@ -1,27 +1,37 @@
 import { injectable } from "inversify";
 import "reflect-metadata";
-import { get as WRGet, post as WRPost, put as WRPut, patch as WRPatch, del as WRDel, RequestOptions, Response } from 'web-request';
+import * as WebRequest from 'web-request';
 import IHttpClient from "./IHttpClient"
 
 @injectable()
 export default class HttpClient implements IHttpClient {
-    async get(url: string, options?: RequestOptions): Promise<Response<string>> {
-        return await WRGet(url, options);
+    async get(url: string, options?: WebRequest.RequestOptions): Promise<string> {
+        let result = await WebRequest.get(url, options);
+
+        return result.content;
     }
 
-    async post(url: string, options?: RequestOptions, content?: any): Promise<Response<string>> {
-        return await WRPost(url, options, content);
+    async post(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
+        let result = await WebRequest.post(url, options, content);
+
+        return result.content;
     }
 
-    async put(url: string, options?: RequestOptions, content?: any): Promise<Response<string>> {
-        return await WRPut(url, options, content);
+    async put(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
+        let result = await WebRequest.put(url, options, content);
+
+        return result.content;
     }
 
-    async patch(url: string, options?: RequestOptions, content?: any): Promise<Response<string>> {
-        return await WRPatch(url, options, content);
+    async patch(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
+        let result = await WebRequest.patch(url, options, content);
+
+        return result.content;
     }
 
-    async delete(url: string, options?: RequestOptions): Promise<Response<string>> {
-        return await WRDel(url, options);
+    async del(url: string, options?: WebRequest.RequestOptions): Promise<string> {
+        let result = await WebRequest.del(url, options);
+
+        return result.content;
     }
 }

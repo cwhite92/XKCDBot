@@ -13,8 +13,6 @@ export default class ComicRetriever implements IComicRetriever {
     }
 
     public async getLatestComic(): Promise<string> {
-        return this.httpClient.get('http://xkcd.com').then((response) => {
-            return response.content;
-        });
+        return this.httpClient.get('http://xkcd.com');
     }
 }
