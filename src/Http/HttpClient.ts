@@ -1,36 +1,46 @@
-import { injectable } from "inversify";
+import { injectable, inject } from "inversify";
 import "reflect-metadata";
-import * as WebRequest from 'web-request';
 import IHttpClient from "./IHttpClient"
+import IWebRequestWrapper from "./IWebRequestWrapper";
+import WebRequestWrapper from "./WebRequestWrapper";
+import IRequestOptions from "./IRequestOptions";
 
 @injectable()
 export default class HttpClient implements IHttpClient {
-    async get(url: string, options?: WebRequest.RequestOptions): Promise<string> {
-        let result = await WebRequest.get(url, options);
+    webRequest: WebRequestWrapper;
+
+    constructor(
+        @inject("WebRequestWrapper") webRequest: IWebRequestWrapper
+    ) {
+        this.webRequest = webRequest;
+    }
+
+    async get(url: string, options?: IRequestOptions): Promise<string> {
+        let result = await this.webRequest.get(url, options);
 
         return result.content;
     }
 
-    async post(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
-        let result = await WebRequest.post(url, options, content);
+    async post(url: string, options?: IRequestOptions, content?: any): Promise<string> {
+        let result = await this.webRequest.post(url, options, content);
 
         return result.content;
     }
 
-    async put(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
-        let result = await WebRequest.put(url, options, content);
+    async put(url: string, options?: IRequestOptions, content?: any): Promise<string> {
+        let result = await this.webRequest.put(url, options, content);
 
         return result.content;
     }
 
-    async patch(url: string, options?: WebRequest.RequestOptions, content?: any): Promise<string> {
-        let result = await WebRequest.patch(url, options, content);
+    async patch(url: string, options?: IRequestOptions, content?: any): Promise<string> {
+        let result = await this.webRequest.patch(url, options, content);
 
         return result.content;
     }
 
-    async del(url: string, options?: WebRequest.RequestOptions): Promise<string> {
-        let result = await WebRequest.del(url, options);
+    async del(url: string, options?: IRequestOptions): Promise<string> {
+        let result = await this.webRequest.del(url, options);
 
         return result.content;
     }

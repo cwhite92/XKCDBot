@@ -1,7 +1,12 @@
 import { expect } from 'chai';
+import IHttpClient from "../../src/Http/IHttpClient";
+import HttpClient from "../../src/Http/HttpClient";
 
 describe('HTTP Client', () => {
+
     it('should do something', () => {
-        expect(1).to.eq(1);
+        let httpClient:IHttpClient = new HttpClient();
+
+
     })
 });
