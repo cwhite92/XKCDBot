@@ -12,11 +12,10 @@
   },
   "homepage": "https://github.com/cwhite92/XKCDBot#readme",
   "devDependencies": {
-    "chai": "^3.5.0",
     "gulp": "^3.9.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-jasmine": "^2.4.0",
     "gulp-typescript": "^2.13.6",
-    "mocha": "^3.0.2"
+    "jasmine": "^2.4.1"
   },
   "dependencies": {
     "inversify": "^2.0.0-rc.1",
