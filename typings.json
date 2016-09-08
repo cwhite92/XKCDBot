@@ -2,6 +2,8 @@
   "globalDependencies": {
     "form-data": "registry:dt/form-data#0.0.0+20160724024111",
     "inversify": "registry:dt/inversify#2.0.0-beta.9+20160811111312",
+    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
     "node": "registry:dt/node#6.0.0+20160818175514",
+    "request": "registry:dt/request#0.0.0+20160726020908"
   }
 }

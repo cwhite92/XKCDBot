@@ -11,8 +11,4 @@ export default class ComicRetriever implements IComicRetriever {
     ) {
         this.httpClient = httpClient;
     }
-
-    public async getLatestComic(): Promise<string> {
-        return this.httpClient.get('http://xkcd.com');
-    }
 }
