@@ -1,14 +1,14 @@
 import { Kernel } from "inversify";
 
-import IHttpClient from "./Http/IHttpClient"
-import IComicRetriever from "./Xkcd/IComicRetriever";
+import IHttpClient from "./Http/IHttpClient";
+import IXkcdClient from "./Http/XkcdClient";
 
 import HttpClient from "./Http/HttpClient";
-import ComicRetriever from "./Xkcd/ComicRetriever";
+import XkcdClient from "./Http/XkcdClient";
 
 let kernel = new Kernel();
 
 kernel.bind<IHttpClient>("HttpClient").to(HttpClient);
-kernel.bind<IComicRetriever>("ComicRetriever").to(ComicRetriever);
+kernel.bind<IXkcdClient>("XkcdClient").to(XkcdClient);
 
 export default kernel;
