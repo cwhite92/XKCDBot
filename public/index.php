@@ -6,6 +6,8 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \ChrisWhite\XkcdSlack\ComicSearcher;
 
+const FALLBACK_URL = 'http://xkcd.com/%d';
+
 $app = new \Slim\App();
 $container = $app->getContainer();
 
@@ -103,7 +105,8 @@ $app->post('/xkcd', function (Request $request, Response $response) {
                         'short' => false
                     ]
                 ],
-                'image_url' => $comic['img']
+                'image_url' => $comic['img'],
+                'fallback' => sprintf(FALLBACK_URL, $comic['num'])
             ]
         ]
     ]);
