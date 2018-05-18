@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Search\CachedSearchEngine;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
 {
     private $searchEngine;
 
-    public function __construct(SearchEngine $searchEngine)
+    public function __construct(CachedSearchEngine $searchEngine)
     {
         $this->searchEngine = $searchEngine;
     }
@@ -23,7 +24,7 @@ class ComicController extends Controller
 
         $comic = $this->searchEngine->search($terms);
 
-        if (! $comic) {
+        if ($comic === null) {
             return response(
                 sprintf("I couldn't find a comic matching %s", $terms),
                 200,
