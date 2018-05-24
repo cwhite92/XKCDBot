@@ -6,17 +6,14 @@ use App\Comic;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
-class UpdateComics extends Command
+class SyncComics extends Command
 {
     protected $signature = 'xkcd:update';
     protected $description = 'Syncs local comics with XKCD comics';
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
