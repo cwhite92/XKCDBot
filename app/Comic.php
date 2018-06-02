@@ -22,6 +22,6 @@ class Comic extends Model
      */
     public function getUrlAttribute()
     {
-        return sprintf('https://xkcdbot.com/%s', $this->xkcd_id);
+        return sprintf('https://xkcd.com/%s', $this->xkcd_id);
     }
 }
