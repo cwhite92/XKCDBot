@@ -47,11 +47,16 @@ class ComicController extends Controller
                         [
                             'type' => 'button',
                             'text' => 'View comic on xkcd.com',
-                            'url' => $comic->url
+                            'url' => $comic->comic_url
+                        ],
+                        [
+                            'type' => 'button',
+                            'text' => 'Explain comic',
+                            'url' => $comic->explain_url
                         ]
                     ],
                     'image_url' => $comic->image,
-                    'fallback' => $comic->url
+                    'fallback' => $comic->comic_url
                 ]
             ]
         ]);

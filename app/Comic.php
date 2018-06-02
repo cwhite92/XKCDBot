@@ -20,8 +20,18 @@ class Comic extends Model
      *
      * @return string
      */
-    public function getUrlAttribute()
+    public function getComicUrlAttribute()
     {
-        return sprintf('https://xkcd.com/%s', $this->xkcd_id);
+        return sprintf('https://xkcd.com/%d', $this->xkcd_id);
+    }
+
+    /**
+     * Returns the URL to the explainxkcd entry for this comic.
+     *
+     * @return string
+     */
+    public function getExplainUrlAttribute()
+    {
+        return sprintf('https://www.explainxkcd.com/wiki/index.php/%d', $this->xkcd_id);
     }
 }
