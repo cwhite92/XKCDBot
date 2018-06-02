@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Search\CachedSearchEngine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ComicController extends Controller
 {
@@ -23,6 +24,11 @@ class ComicController extends Controller
         }
 
         $comic = $this->searchEngine->search($terms);
+
+        Log::info('User searched for comic', [
+            'terms' => $terms,
+            'comic' => $comic ? $comic->toArray() : $comic
+        ]);
 
         if ($comic === null) {
             return response(
