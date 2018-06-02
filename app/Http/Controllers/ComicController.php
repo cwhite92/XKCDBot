@@ -43,8 +43,15 @@ class ComicController extends Controller
                             'short' => false
                         ]
                     ],
+                    'actions' => [
+                        [
+                            'type' => 'button',
+                            'text' => 'View comic on xkcd.com',
+                            'url' => $comic->url
+                        ]
+                    ],
                     'image_url' => $comic->image,
-                    'fallback' => sprintf('http://xkcd.com/%d', $comic->xkcd_id)
+                    'fallback' => $comic->url
                 ]
             ]
         ]);
