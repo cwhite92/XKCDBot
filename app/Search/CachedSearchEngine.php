@@ -25,12 +25,21 @@ class CachedSearchEngine
 
         $result = $this->searchEngine->search($terms);
 
-        if ($result !== null) {
+        if ($this->shouldCache($terms)) {
             Cache::put($key, $result, now()->addDays(30));
-
-            return $result;
         }
 
-        return null;
+        return $result;
+    }
+
+    /**
+     * Determines if we should cache the given search term.
+     *
+     * @param string $terms
+     * @return bool
+     */
+    private function shouldCache(string $terms): bool
+    {
+        return $terms !== '!random';
     }
 }

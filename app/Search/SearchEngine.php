@@ -6,6 +6,7 @@ use App\Comic;
 use App\Search\Source\ComicIdSource;
 use App\Search\Source\ComicTitleSource;
 use App\Search\Source\GoogleSource;
+use App\Search\Source\RandomComicSource;
 
 class SearchEngine
 {
@@ -14,6 +15,7 @@ class SearchEngine
     public function __construct()
     {
         $this->sources = [
+            RandomComicSource::class,
             ComicIdSource::class,
             ComicTitleSource::class,
             GoogleSource::class,
