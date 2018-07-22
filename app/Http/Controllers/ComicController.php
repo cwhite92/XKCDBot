@@ -51,16 +51,19 @@ class ComicController extends Controller
                     ],
                     'actions' => [
                         [
+                            'name' => 'view',
                             'type' => 'button',
                             'text' => 'View comic on xkcd.com',
                             'url' => $comic->comic_url
                         ],
                         [
+                            'name' => 'explain',
                             'type' => 'button',
                             'text' => 'Explain comic',
                             'url' => $comic->explain_url
                         ],
                         [
+                            'name' => 'alt',
                             'type' => 'button',
                             'text' => 'Show alt text',
                             'confirm' => [
