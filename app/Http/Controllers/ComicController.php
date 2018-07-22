@@ -45,7 +45,6 @@ class ComicController extends Controller
                     'fields' => [
                         [
                             'title' => $comic->title,
-                            'value' => $comic->alt,
                             'short' => false
                         ]
                     ],
