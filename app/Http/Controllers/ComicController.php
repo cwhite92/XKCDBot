@@ -59,6 +59,16 @@ class ComicController extends Controller
                             'type' => 'button',
                             'text' => 'Explain comic',
                             'url' => $comic->explain_url
+                        ],
+                        [
+                            'type' => 'button',
+                            'text' => 'Show alt text',
+                            'confirm' => [
+                                'title' => 'Alt text',
+                                'text' => $comic->alt,
+                                'ok_text' => 'OK',
+                                'dismiss_text' => 'Cancel'
+                            ]
                         ]
                     ],
                     'image_url' => $comic->image,
