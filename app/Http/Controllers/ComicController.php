@@ -15,7 +15,7 @@ class ComicController extends Controller
         $this->searchEngine = $searchEngine;
     }
 
-    public function search(Request $request)
+    public function __invoke(Request $request)
     {
         $terms = $request->input('text');
 

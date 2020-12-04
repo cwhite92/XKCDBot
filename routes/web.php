@@ -1,21 +1,14 @@
 <?php
 
-Route::get('/', function () {
-    return view('home');
-});
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ComicController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/privacy', function () {
-    return view('privacy');
-});
+Route::view('/', 'home');
+Route::view('/privacy', 'privacy');
+Route::view('/support', 'support');
+Route::view('/thanks', 'thanks');
 
-Route::get('/support', function () {
-    return view('support');
-});
+Route::get('/auth', AuthController::class);
 
-Route::get('/thanks', function () {
-    return view('thanks');
-});
-
-Route::get('/auth', 'AuthController@callback');
-
-Route::post('/xkcd', 'ComicController@search');
+Route::post('/xkcd', ComicController::class);

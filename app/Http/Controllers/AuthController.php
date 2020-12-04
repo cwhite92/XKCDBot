@@ -8,7 +8,7 @@ use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 
 class AuthController extends Controller
 {
-    public function callback(Request $request)
+    public function __invoke(Request $request)
     {
         $provider = new GenericProvider([
             'clientId'                => getenv('SLACK_CLIENT_ID'),
