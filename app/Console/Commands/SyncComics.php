@@ -13,14 +13,6 @@ class SyncComics extends Command
     protected $description = 'Syncs local comics with XKCD comics';
 
     /**
-     * Create a new command instance.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
